@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 선택자 selecor */
+        /* 선언은 속성(property) */
+        p {
+            color: red; 
+            padding: 10px;
+            background-color: black !important;
+        }
+
+        .div-area {
+            background-color: red;
+            /* color:white; */
+            width: 100%;
+            height: 50px;
+        }
+
+        .text-white {
+            color:white;
+        }
+
+        .p-area {
+            background-color: red;
+        }
+
+        .primary {
+            padding: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: blue;
+            border-color: blue;
+        }
+
+        .secondary {
+            padding: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: green;
+            border-color: blue;
+        }
+
+        .bg-blue {
+            background-color: blue;
+        }
+
+        .bg-green {
+            background-color: green;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .p-5 {
+            padding: 5px;
+        }
+
+        #header {
+            color: red;
+        }
+
+        #header >.div-area{
+            height: 30px
+            background-color: blueviolet;
+        }
+
+        input[type="text"]{
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="div-area">
+            div 영역
+        <div class="div-area">div 하위영역</div>
+        <div class="div-area">div 하위영역</div>
+        <div class="div-area">div 하위영역</div>
+        </div>
+        <p> p영역</p>
+    </div>
+    <input type="text" name="" id="">
+    <br>
+    <input type="email" name="" id="">
+    
+    <div class="div-area text-white">영역입니다.</div>
+    <p class="p-area">문장입니다.</p>
+    <p>문장입니다.</p>
+    <p>문장입니다.</p>
+    <p>문장입니다.</p>
+    <button class="primary">저장</button>
+    <button class="secondary">저장</button>
+    <button class="text-white bg-blue bold p-5">저장</button>
+    <button class="text-white bg-green bold p-5">저장</button>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+            .dotted{
+                border-style: dotted;
+                border-width: 3px;
+            }
+            .dashed{
+                border-style: dashed;
+            }
+            .double{
+                border-style: double;
+                border-width: 5px;
+            }
+            .mix{
+                /* border-style: dotted dashed double solid;
+                border-width: 3px 3px 3px 3px;
+                border-color:red orange yellow green; */
+                /* 순서가 무조건 맞아야 함, 한번에 쓰때는 */
+                border: 3px solid red;
+                border-radius: 50px;
+            }
+
+            button{
+                border-radius: 100px;
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="dotted">점선</p>
+        <p class="dashed">점선</p>
+        <p class="double">이중선</p>
+        <p class="mix">4개의 면의 선색이 다른 적용</p>
+        <button>저장</button>
+    </body>
+</html>

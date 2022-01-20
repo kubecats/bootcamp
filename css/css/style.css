@@ -1,0 +1,23 @@
+a:visited {
+  color: red;
+}
+
+a:hover {
+  color: green;
+}
+
+ul > li:last-child {
+  color: red;
+}
+
+table,
+th,
+td {
+  border: 1px solid blue;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+table > tbody > tr:nth-child(2n) {
+  background-color: green;
+}
