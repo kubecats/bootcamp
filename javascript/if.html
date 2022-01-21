@@ -31,7 +31,8 @@
         }else if(age>=70){
             busFare=0;
         }
-
+            
+        // 더 간결한 좋은 코드
         if(age<= 7){
             busFare = 0;
         }else if(age <= 13){
@@ -43,31 +44,45 @@
         }else {
             busFare=0;
         }
-        console.log(busFare);
+            
+        console.log(busFare); //1000
 
         let isAdult = true;
+            
+        //false로 실행안됨
         if(!isAdult){
             console.log(isAdult);
         }
-
+            
+        //실행안됨
         if(undefined){
             console.log(isAdult);
         }
+            
+        //실해안됨
         if(null){
             console.log(isAdult);
         }
+            
+        // 실행안됨 
         x=0;
         if(x){
             console.log(isAdult);
         }
+            
         //NaN = Not a Number
+        //실행안됨
         if(NaN){
             console.log(isAdult);
         }
+        
+        // 실행됨
         let txt="ABC"
         if(txt){
             console.log(txt);
         }
+            
+        // 실행안됨?
         let txt2=""
         if(txt2){
             console.log(txt);
