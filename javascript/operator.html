@@ -45,20 +45,22 @@
 
             console.log(sum);
 
+            
+            //비교 연산자
             x=4;
             y="4";
 
-            //비교 연산자
-
             console.log(x==y); //true 값만 보고 type은 보지 않는다.
-            console.log(x===y); //false, type도 봄
+            console.log(x===y); //false, =이 3개 인경우, type도 체크함
             console.log(x !=y); //false
             console.log(x !==y); //true
-            console.log(x>y);
-            console.log(x>=y);
-            console.log(x<y);
-            console.log(x<=y);
+            
+            console.log(x>y); //false
+            console.log(x>=y);  //true
+            console.log(x<y);  //false
+            console.log(x<=y);  //true
 
+            
             // 산술 연산자
             // 증가 연산자 ++
 
@@ -68,7 +70,7 @@
             console.log(x); //6
 
             x2=5;
-            y2=++x;
+            y2=++x2;
             console.log(y2); //6
             console.log(x2); //6
             
@@ -78,20 +80,21 @@
 
             x3=5;
             y3=-x3;
-            console.log(y3);
+            console.log(y3);  // -5
 
+            
             // 논리 연산자
             x=3;
             y=2;
             z=2;
             q=1;
 
-            console.log(x>y && x>z && x>q);
+            console.log(x>y && x>z && x>q);  //true, &&는 and 조건
 
             x=3;
             y=2;
             z=4;
-            console.log(x>y || (x>z && x>q));
+            console.log(x>y || (x>z && x>q));  //true, ||는 or 조건
             console.log(!true); //false
 
             //문자열 연산자
@@ -100,17 +103,19 @@
             // name += lastName;
             // name = name +lastName;
 
+            
             //조건(삼항) 연산자
             // 성인 19
             let age = 17;
             let isAdult = age >=19;
-            console.log(isAdult);
-            isAdult = age >=19? "성인":"미성년자";
+            console.log(isAdult);  //false
+            
+            isAdult = age >=19? "성인":"미성년자";  //조건이 true이면 성인, false이면 미성년자로 출력
             console.log(isAdult);
             
             age =72;
-            let basicCost = 700;
-            let busCost = age < 8? 0: age>65? 0:800;
+            let busCost = 700;
+            busCost = age < 8? 0: age>65? 0:800;
         </script>
     </body>
 </html>
