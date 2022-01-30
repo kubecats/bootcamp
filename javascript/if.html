@@ -20,6 +20,7 @@
       let busFare = 0;
       let age = 20;
 
+<<<<<<< HEAD
       if (age <= 7) {
         busFare = 0;
       } else if (age >= 8 && age <= 13) {
@@ -74,4 +75,75 @@
       }
     </script>
   </body>
+=======
+        if(age<= 7){
+            busFare = 0;
+        }else if(age>=8 && age <= 13){
+            busFare = 450;
+        }else if(age >=14 && age <= 18){
+            busFare =700;
+        }else if(age>=19 && age <70){
+            busFare=1000;
+        }else if(age>=70){
+            busFare=0;
+        }
+            
+        // 더 간결한 좋은 코드
+        if(age<= 7){
+            busFare = 0;
+        }else if(age <= 13){
+            busFare = 450;
+        }else if(age <= 18){
+            busFare =700;
+        }else if(age <70){
+            busFare=1000;
+        }else {
+            busFare=0;
+        }
+            
+        console.log(busFare); //1000
+
+        let isAdult = true;
+            
+        //false로 실행안됨
+        if(!isAdult){
+            console.log(isAdult);
+        }
+            
+        //실행안됨
+        if(undefined){
+            console.log(isAdult);
+        }
+            
+        //실해안됨
+        if(null){
+            console.log(isAdult);
+        }
+            
+        // 실행안됨 
+        x=0;
+        if(x){
+            console.log(isAdult);
+        }
+            
+        //NaN = Not a Number
+        //실행안됨
+        if(NaN){
+            console.log(isAdult);
+        }
+        
+        // 실행됨
+        let txt="ABC"
+        if(txt){
+            console.log(txt);
+        }
+            
+        // 실행안됨?
+        let txt2=""
+        if(txt2){
+            console.log(txt);
+        }
+        </script>
+    </body>
+>>>>>>> 04bcb3653a1d2045d2ad165992f684c36daaaf51
 </html>

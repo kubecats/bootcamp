@@ -8,13 +8,12 @@
     </head>
     <body>
         <script>
-            // let person2 = new Object();
             let person1 = {
                 name:"홍길동",
                 age:22,
                 tel:"010-0000-0000",
                 isAdult: true,
-                // "si-gun-gu":""
+                // "si-gun-gu":"" //([]로 사용하지 않는 이상 에러 발생함,아래와 같은 snake표기법으로 사용해야함)
                 siGunGu: "";
             };
 
@@ -24,22 +23,23 @@
                 tel:"010-0000-0000",
                 isAdult: true,
             };
-            person1["si-gun-gu"];
-
+            
             let personKey = "name";
             person1[personKey]
 
-
+            person1["si-gun-gu"];
 
             let name1 = person1.name;
             let age1 = person1.age;
             let tel1 = person1.tel;
             console.log(name1);
 
-            person1.age =23;
+            person1.age =23; //중간에 key값을 바꿀수도 있음
             console.log(person1.age);
-            person1.addr = "서울시 강서구 동 번지";
+            
+            person1.addr = "서울시 강서구 동 번지"; //주소값 추가도 가능
 
+            //다음과 같은 형식으로도 자료 선언 가능
             let person3 ={};
             person3.name = "하하";
             person3.age = 42;
@@ -51,7 +51,7 @@
             let x=3;
             let y=5;
             let z=x+y;
-            console.log(x);
+            console.log(z);
 
         </script>
     </body>
