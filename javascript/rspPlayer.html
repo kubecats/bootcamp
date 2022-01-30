@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="rspPlayer('가위');">가위</button>
+    <button onclick="rspPlayer('바위');">바위</button>
+    <button onclick="rspPlayer('보');">보</button>
+
+    <script>
+      function getRandomInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function rspPlayer(userRsp) {
+        //playerRsp를 getRandomInteger 함수를 통해 결정
+        const rsp = ["가위", "바위", "보"];
+        const playerRsp = rsp[getRandomInteger(0, 2)];
+
+        // 입력받은 userRsp와 랜덤으로 결정된 playerRsp를 확인
+        console.log("user", userRsp);
+        console.log("player", playerRsp);
+
+        // 이기기 위한 경우를 object 로 정의
+        const userWinValue = {
+          가위: "보",
+          바위: "가위",
+          보: "바위",
+        };
+
+        const result =
+          userRsp === playerRsp
+            ? 0
+            : userWinValue[userRsp] === playerRsp
+            ? 1
+            : -1;
+
+        console.log(result);
+      }
+
+      // 수작업으로 복잡하게 구현하는 경우
+      //rspPlayer();
+      //   if (userRsp === "가위") {
+      //     if (playerRsp === " 가위") {
+      //       console.log("비겼네요");
+      //     } else if (playerRsp === "바위") {
+      //       console.log("당신이 졌습니다.");
+      //     } else {
+      //       console.log("당신이 이겼습니다.");
+      //     }
+      //   }
+    </script>
+  </body>
+</html>
