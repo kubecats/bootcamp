@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="myFunction2(this);">click</button>
+    <select name="" id="" onchange="myFunction2(this);">
+      <option value="1">A</option>
+      <option value="2">B</option>
+      <option value="3">C</option>
+    </select>
+
+    <script>
+      //windows를 반환
+      function myFunction() {
+        console.log(this);
+      }
+      myFunction();
+
+      // html button 관련 내용 전체가 그대로 나옴
+      function myFunction2(obj) {
+        console.log(obj);
+      }
+
+      //object 안에 value로 function을 넣을수 있음
+      let person = {
+        firstName: "John",
+        lastName: "Doe",
+        getFullname: function () {
+          return this.firstName + " " + this.lastName; //this를 사용하지 않으면 아래 출력에서 에러가 발생함
+        },
+      };
+
+      // object안에서 선언된 특정 key 의 함수를 선언할때는 반드시 this를 통해서만 접근이 가능함
+      console.log(person.getFullname());
+
+      //this의 다양한 용법에 대한 이해..
+    </script>
+  </body>
+</html>

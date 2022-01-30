@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // arrow function
+      // 화살표 함수
+
+      // 함수 선언식
+      function hello(name) {
+        return "Hello" + name;
+      }
+
+      // 함수 표현식
+      const hello2 = function (name) {
+        return "Hello" + name;
+      };
+
+      //화살표 함수 ()괄호화 {} 사이에 화살표를 넣어줌
+      const hello3 = (name) => {
+        return "Hello" + name;
+      };
+
+      //return 생략 가능
+      const hello4 = (name) => {
+        "Hello" + name;
+      };
+
+      //중괄호 생략 가능(return이 한개만 있는 경우)
+      const hello5 = (name) => "Hello" + name;
+    </script>
+  </body>
+</html>

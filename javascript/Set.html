@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Set, Map 객체 (신규 추가가 얼마 안됨)
+
+      let foods = [
+        "햄버거",
+        "김치찌개",
+        "된장찌개",
+        "제육볶음",
+        "김치찌개",
+        "햄버거",
+      ];
+
+      // 유일한 음식 이름 찾기
+      // object의 key는 유일한 값만 갖는 특징을 이용
+      let oFoods = {};
+      //   for (const food of foods) {
+      //     oFoods[food] = "";
+      //   }
+
+      // 주로 for문은 forEach를 통해 사용함
+      foods.forEach(function (food) {
+        oFoods[food] = "";
+      });
+
+      console.log(oFoods);
+
+      let uniqueFoods = [];
+      for (const foodName in oFoods) {
+        uniqueFoods.push(foodName);
+      }
+      console.log(uniqueFoods);
+
+      // Set 객체
+      // 배열처럼 데이터의 집합
+      // 순서가 없음, value값이 무조건 유일한 값만 유지
+
+      let foodSet = new Set();
+      foodSet.add("햄버거");
+      foodSet.add("김치찌개");
+      foodSet.add("된장찌개");
+      foodSet.add("제육볶음");
+      foodSet.add("김치찌개"); //저장되지 않음
+      foodSet.add("햄버거"); //저장되지 않음
+
+      // Set의 내장함수에 has 가 있음
+      console.log(foodSet.has("김치찌개"));
+
+      foodSet.delete("김치찌개");
+
+      // Set에 넣은 자료를 모두 삭제
+      // foodSet.clear();
+
+      foodSet.forEach(function (food) {
+        console.log(food);
+      });
+
+      // 유일한 값 찾는것은 Set이 나오기 전까지는 Object의 Key를 사용하는게 유일했음
+    </script>
+  </body>
+</html>

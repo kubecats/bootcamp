@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // JSON : JavaScript Object Notation
+      // object 의 key와 value를 입력하는 형식과 매우 유사함 (단 json은 key가 문자열 형태임)
+      // 서버로부터 받은 json 을 obejct 로 바로 사용할 수 있어 많이 사용함
+
+      //서버로 배열의 값을 직접 보낼 수 없다.
+      let arr = [3, 4, 5, 6, 7];
+      console.log(arr);
+
+      // 서버로 보낼때
+      // JSON구조의 문자열로 변환하여 서버에 보내야 함
+      console.log(JSON.stringify(arr)); //"[3,4,5,6,7]" 의 형태로 보내면 서버가 배열로 변환함
+
+      // 서버에서 보낸걸 받을때
+      // javascript에서 받을 때는 서버에서 받은 json 문자열을 배열로 변환해줘야함
+      console.log(JSON.parse("[3,4,5,6,7]"));
+    </script>
+  </body>
+</html>

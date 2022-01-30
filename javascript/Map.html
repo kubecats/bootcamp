@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Map 객체 - 자료구조
+      // key - value 쌍
+      // object 가 key-value 쌍
+
+      let oUser = {};
+      oUser.name = "홍길동";
+      oUser.email = "abc@gmail.com";
+      oUser.phone = "010-0000-0000";
+
+      let userName = new Map();
+      userMap.set("name", "홍길동");
+      userMap.set("email", "abc@gmail.com");
+      userMap.set("phone", "010-0000-0000");
+
+      //   userMap.size();
+      //   userMap.has("name");
+      //   userMap.delete("name");
+      //   userMap.clear();
+
+      userMap.forEach(function (item) {
+        console.log(item);
+      });
+
+      console.log(userMap.get("name"));
+    </script>
+  </body>
+</html>
