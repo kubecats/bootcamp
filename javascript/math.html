@@ -8,63 +8,62 @@
   </head>
   <body>
     <script>
-      // Math : 객체
-      // round : 반올림 처리
+      // * Math : 객체
+      // * round : 반올림 처리
       console.log(Math.round(4.9));
       console.log(Math.round(4.4));
 
-      //ceil() : 무조건 올림 처리
+      // * ceil() : 무조건 올림 처리
       console.log(Math.ceil(4.2));
 
-      // 공지수 -51, 한 페이지에 보여주는 공지수는 10건
-      // 1,2,3,4,5,6 번 페이지까지는 나와야 함
       // 페이징 처리할 때 총 페이지수를 계산할 때 ceil 함수 사용
+      // 공지수 -51, 한 페이지에 보여주는 공지수는 10건인 경우, 1,2,3,4,5,6 번 페이지까지는 나와야 함
       // 341건이고 15건씩 보여준다고 하면
       let total = 341;
       let countPerPage = 15;
       let totalPage = Math.ceil(total / countPerPage);
       console.log(totalPage);
 
-      // floor() : 무조건 내림처리
-      console.log(Math.floor(4.7));
-      console.log(Math.floor(-4.7));
+      // * floor() : 무조건 내림처리
+      console.log("floor", Math.floor(4.7));
+      console.log("floor", Math.floor(-4.7));
 
-      // trunc() : 소수점 이하는 무조건 버림
+      // * trunc() : 소수점 이하는 무조건 버림
       // floor과 trunc의 차이는? => 양수일때는 차이가 없으나, 음수일때는 차이가 있음
-      console.log(Math.trunc(4.7));
-      console.log(Math.trunc(-4.7));
+      console.log("trunc", Math.trunc(4.7));
+      console.log("trunc", Math.trunc(-4.7));
 
-      // sign : 양수이면 0, 음수이면 -1, 0이면 0
+      // * sign : 양수이면 1, 음수이면 -1, 0이면 0
       // 사용자가 입력한값이 양수인지, 음수인지 or 매출이 양수인지 음수인지 확인가능
-      console.log(Math.sign(-100));
-      console.log(Math.sign(100));
+      console.log("sign", Math.sign(-100));
+      console.log("sign", Math.sign(100));
 
-      //pow : 제곱근
-      console.log(Math.pow(8, 2));
+      // * pow : 제곱근
+      console.log("pow", Math.pow(8, 2));
 
-      //sqrt() : 루트값
-      console.log(Math.sqrt(64));
+      // * sqrt() : 루트값
+      console.log("sqrt", Math.sqrt(64));
 
-      //abs() : 무조건 양수값으로 반환
-      console.log(Math.abs(-4.7));
+      // * abs() : 무조건 양수값으로 반환
+      console.log("abs", Math.abs(-4.7));
 
-      //min() : 가장 작은 값
-      console.log(Math.min(0, 2, 5, 11, 3, 5, -1));
+      // * min() : 가장 작은 값
+      console.log("min", Math.min(0, 2, 5, 11, 3, 5, -1));
 
-      //max() : 가장 큰 값
-      console.log(Math.max(0, 2, 5, 11, 3, 5, -1));
+      // * max() : 가장 큰 값
+      console.log("max", Math.max(0, 2, 5, 11, 3, 5, -1));
 
-      //random() : 무작위로 random 반환 (정말 많이 사용하는 함수임)
-      //0보다는 반드시 크고 1보다는 작은 수가 무작위로 나옴
-      console.log(Math.random());
+      // * random() : 무작위로 random 반환 (정말 많이 사용하는 함수임)
+      // 0보다는 반드시 크고 1보다는 작은 수가 무작위로 나옴
+      console.log("random", Math.random());
 
-      //0~9에서의 랜덤 만들기
-      console.log(Math.random() * 10);
-      console.log(Math.floor(Math.random() * 10));
+      // 0~9에서의 랜덤 만들기
+      console.log("random*10", Math.random() * 10);
+      console.log("random*10, floor", Math.floor(Math.random() * 10));
 
-      //1~10 사이에서의 랜덤 만들기
-      console.log(Math.floor(Math.random() * 10) + 1);
-      console.log(Math.ceil(Math.random() * 10));
+      // 1~10 사이에서의 랜덤 만들기
+      console.log("random 1~10", Math.floor(Math.random() * 10) + 1);
+      console.log("random 1~10", Math.ceil(Math.random() * 10));
 
       // 특정 숫자 사이의 랜덤 추출 함수 -> 가위바위보 게임 코딩 -> rspPlayer.html
       function getRandomInteger(min, max) {

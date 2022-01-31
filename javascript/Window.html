@@ -8,7 +8,11 @@
   </head>
   <body>
     <button onclick="doDelete();">삭제</button>
+    <br />
+    <br />
     <button onclick="stop();">중지</button>
+    <br />
+    <br />
 
     <table>
       <thead>
@@ -28,9 +32,10 @@
 
     <script>
       // javascript는 객체의 집합이다.
+      // * window.alert (window 생략해서 사용, 이유는 window가 전역객체이기 떄문이다.)
       // alert("이것은 경고창입니다");
-      // window.alert인데 생략해서 사용, 이유는 window가 전역객체이기 떄문이다.
 
+      // * window.confirm, promt
       function doDelete() {
         // const r = confirm("정말 삭제하시겠습니까?");
         // console.log(r);
@@ -45,11 +50,13 @@
         }
       }
 
+      // * window.open
+      // 새로운 창을 띄워서 보여줌, 최근 개발 방식은 아니긴 함
       function openUserDetail(userID) {
-        window.open("https://naver.com"); //새로운 창을 띄워서 보여줌, 최근 개발 방식은 아니긴 함
+        window.open("https://naver.com");
       }
 
-      // setTimeout(), clearTimeout()
+      // * setTimeout(), clearTimeout()
       // - 용도: 유뷰브에서 광고 띄울때의 상황에서 사용될 수 있음
       // - 용도: 휴대폰 3분 인증 등의 상황에서 사용될 수 있음
       let myExec = setTimeout(function () {
@@ -61,7 +68,7 @@
         clearTimeout(myExec2); //stop에서 사용하기 위하여 myExec2라는 변수에 할당해 넣었음
       }
 
-      // setInterval, clearInterval
+      // * setInterval, clearInterval
       // - 용도: 슬라이드를 넘길때 사용될 수 있음
       // - 용도: 데이터를 일정시각마다 갱신해야할때, 주식정보 등
       let myExec2 = setInterval(function () {

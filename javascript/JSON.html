@@ -16,13 +16,14 @@
       let arr = [3, 4, 5, 6, 7];
       console.log(arr);
 
-      // 서버로 보낼때
+      // 서버로 보낼때 : stringfy
       // JSON구조의 문자열로 변환하여 서버에 보내야 함
-      console.log(JSON.stringify(arr)); //"[3,4,5,6,7]" 의 형태로 보내면 서버가 배열로 변환함
+      // "[3,4,5,6,7]" 의 형태로 보내면 서버가 배열로 변환함
+      console.log("stringfy", JSON.stringify(arr));
 
-      // 서버에서 보낸걸 받을때
+      // 서버에서 보낸걸 받을때 : parse
       // javascript에서 받을 때는 서버에서 받은 json 문자열을 배열로 변환해줘야함
-      console.log(JSON.parse("[3,4,5,6,7]"));
+      console.log("parse", JSON.parse("[3,4,5,6,7]"));
     </script>
   </body>
 </html>
