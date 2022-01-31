@@ -247,6 +247,7 @@
 
       // * filter() (가장 잘 쓰는 함수임)
       // 700원 갖고 사먹을수 있는 음료수 출력
+      // filter 함수를 사용하지 않고 개발하는 방법
       newProductList = [];
       const inputCoin = 700;
       for (const product of productList) {
@@ -257,9 +258,116 @@
 
       console.log(newProductList);
 
-      // filter 부분 다시 듣기
+      // function doFilter(product) {
+      //     if (product.price <= inputCoin) {
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+      //   }
 
-      console.log(productList.filter((p) => p.price <= inputCoin));
+      // return product.price <= inputCoin ? true : false;
+
+      // newProductList = productList.filter(doFilter);
+      // newProductList = productList.filter(function(product){return product.price <= inputCoin ? true : false;});
+
+      // console.log(newProductList);
+
+      //   console.log(productList.filter((p) => p.price <= inputCoin));
+
+      // * map()
+      let userList = [
+        {
+          firstName: "재석",
+          lastName: "유",
+          email: "yu@gmail.com",
+        },
+        {
+          firstName: "종국",
+          lastName: "김",
+          email: "kim@gmail.com",
+        },
+        {
+          firstName: "흥국",
+          lastName: "김",
+          email: "kim@gmail.com",
+        },
+        {
+          firstName: "세찬",
+          lastName: "양",
+          email: "yang@gmail.com",
+        },
+        {
+          firstName: "석진",
+          lastName: "지",
+          email: "ji@gmail.com",
+        },
+      ];
+
+      // 서버에서 받아오는 정보를 선택적으로 보여줄 수 있음
+      function newUserMap(user) {
+        return {
+          firstName: user.firstName,
+          //lastName: user.lastName,
+          email: user.email,
+          fullName: user.lastName + user.firstName,
+        };
+      }
+
+      let userList2 = userList.map(newUserMap);
+      console.log(userList2);
+
+      // * reduce()
+
+      points = [80, 90, 95, 78, 88, 100, 92];
+      let sum = points.reduce(function (
+        accumulator,
+        currentValue,
+        currentIndex,
+        arr
+      ) {
+        // accumulator : 누적 값
+        // currentValue : 현재 배열 요소
+        // currentIndex : 현재 배열 인덱스 번호
+        // arr : 전체 배열
+
+        return accumulator + currentValue;
+      },
+      0);
+      console.log(sum);
+
+      let sum2 = productList.reduce(function (
+        accumulator,
+        currentValue,
+        currentIndex,
+        arr
+        // total,
+        // product
+      ) {
+        // 첫 번째 - accumulator : 누적 값
+        // 두 번째 - currentValue : 현재 배열 요소
+        // 세 번째 - currentIndex : 현재 배열 인덱스 번호
+        // 네 번째 - arr : 전체 배열
+        // 거의 첫번째, 두번째 parameter만 사용됨
+
+        return accumulator + currentValue.price;
+        // return total + product.price;
+      }, 0);
+      //누적값이 들어가는 total의 초기값 입력
+
+      console.log("음료 전체 합계", sum2);
+
+      // userList에서 김씨 성을 갖은 요소만 추출, 하지만 이것은 filter를 사용하는게 빠를 수 있음
+      // 숫자를 통한 합계에서만 reduce를 많이 사용함
+      let kims = userList.reduce(function (users, user) {
+        if (user.lastName === "김") {
+          users.push(user);
+        }
+
+        return users;
+      }, []);
+
+      console.log(kims);
     </script>
   </body>
 </html>

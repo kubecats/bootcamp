@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="date" name="" id="" />~<input type="date" name="" id="" />
+    <script>
+      // Date 객체 - 날짜
+
+      let now = new Date();
+      console.log(now);
+
+      console.log("getFullYear:", now.getFullYear());
+      console.log("getMonth:", now.getMonth() + 1);
+      console.log("getDate:", now.getDate());
+      console.log("getDay:", now.getDay());
+      console.log("getHours:", now.getHours());
+      console.log("getMinutes:", now.getMinutes());
+      console.log("getSeconds:", now.getSeconds());
+      console.log("getMilliseconds:", now.getMilliseconds());
+
+      // 1970년 1월 1일 기준으로 오늘까지의 날짜를 밀리세컨드로 바꿈
+      console.log(now.getTime());
+
+      now.setFullYear(2021); // 2021년도로 날짜를 바꿈, 월, 일등도 set으로 바꿀 수 있음, 거의 안쓰임
+      console.log(now);
+
+      let date = new Date("2022-01-30 11:11:11");
+      console.log(date);
+
+      // 오늘 기준으로 몇일 전 날짜 찾는 함수 정의 -> 가져다가 쓰면 됨, 많이 사용하게 됨
+      function getIntervalDate(day) {
+        let now = new Date();
+        let dayMillisecondes = 60 * 60 * 24 * 1000;
+
+        let intervalDate = now.getTime() + dayMillisecondes * day;
+        return new Date(intervalDate);
+      }
+
+      // 30일 전 날짜
+      console.log(getIntervalDate(-30));
+
+      // YYYY-MM-DD
+      let year = now.getFullYear();
+      let month = now.getMonth() + 1;
+      //   if (month < 10) month = "0" + month;
+      let day = now.getDate();
+
+      console.log(year + "-" + month + "-" + day);
+
+      // padStart는 String에서만 사용할 수 있으므로 toString을 사용해줌
+      console.log(year + "-" + month.toString().padStart(2, 0) + "-" + day);
+    </script>
+  </body>
+</html>
