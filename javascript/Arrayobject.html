@@ -21,6 +21,7 @@
       </thead>
       <tbody id="tableTbody"></tbody>
     </table>
+
     <script>
       // Array 객체 (가장 중요함)
       let brands = ["애플", "구글", "메타", "아마존", "네이버", "카카오"];
@@ -97,8 +98,6 @@
       let sendMsg = [];
       let eventQueue = [];
 
-      // eventQue.shift();
-
       // * unshift()
       brands.unshift("삼성전자");
       console.log(brands);
@@ -150,11 +149,11 @@
       //   console.log(productList.sort());
       brands = ["애플", "구글", "메타", "아마존", "네이버", "카카오"];
 
-      console.log(brands.sort());
+      console.log("brand 정렬 : ", brands.sort());
 
       // 정렬하면 순서가 숫자 순서대로 정렬이 안된다.
       let points = [40, 100, 1, 5, 25, 10];
-      console.log(points.sort());
+      console.log("point 정렬 : ", points.sort());
 
       // 이렇게 해야 숫자순서대로 정렬이 된다.
       // 음수값이면 위치를 바꾸지 않는다. 양수값이면 위치를 바꾼다.

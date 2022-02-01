@@ -1,0 +1,224 @@
+// Q1. make a string out of an array
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Q1. make a string out of an array
+      {
+        const fruits = ["apple", "banana", "orange"];
+        const result = fruits.join(", ");
+        console.log(result);
+        console.log("-----------------");
+      }
+
+      // Q2. make an array out of a string
+      {
+        const fruits = "🍎, 🥝, 🍌, 🍒";
+        console.log(fruits);
+
+        const result = fruits.split(",", 2);
+        const result2 = fruits.split();
+        console.log(result); //, 을 넣어야 string을 array로 받음, 개수 제한 가능
+        console.log(result2); //string을 하나의 array의 요소로 받음
+        console.log("-----------------");
+      }
+
+      // Q3. make this array look like this: [5, 4, 3, 2, 1]
+      {
+        const array = [1, 2, 3, 4, 5];
+
+        // 내가 푼거
+        function numbersortDsc(a, b) {
+          return b - a;
+        }
+        console.log(array.sort(numbersortDsc));
+
+        // reverse 함수 이용
+        const result = array.reverse();
+        console.log(result);
+        console.log(array); //배열 자체의 값을 reverse 시킴
+        console.log("-----------------");
+      }
+
+      // Q4. make new array without the first two elements
+      {
+        const array = [1, 2, 3, 4, 5];
+
+        // slice는 원하는 부분만 return 해서 받아오고 싶을 때 사용함
+        const result = array.slice(2, 5); //마지막 index는 exclusive 배제됨
+        console.log("Q4:", result);
+        console.log(array); //원래 배열은 변경이 없음
+        console.log("-----------------");
+
+        // splice는 배열의 요소를 자르는 것
+        // 새로운 배열을 만드는 것이 아닌 기존의 배열을 변경하는 것임
+        // const result = array.splice(0, 2);
+        // console.log(result);
+        // console.log(array);
+
+        // 내가 푼거
+        // console.log(array.shift());
+        // console.log(array.shift());
+        // console.log(array);
+      }
+
+      class Student {
+        constructor(name, age, enrolled, score) {
+          this.name = name;
+          this.age = age;
+          this.enrolled = enrolled;
+          this.score = score;
+        }
+      }
+      const students = [
+        new Student("A", 29, true, 45),
+        new Student("B", 28, false, 80),
+        new Student("C", 30, true, 90),
+        new Student("D", 40, false, 66),
+        new Student("E", 18, true, 88),
+      ];
+
+      // Q5. find a student with the score 90
+      {
+        // 내가 푼거
+        newStudent = [];
+        const score = 90;
+        for (const student of students) {
+          if (student.score === score) {
+            newStudent.push(student);
+          }
+        }
+
+        console.log(newStudent);
+
+        const result = students.find(function (student, index) {
+          console.log(student, index);
+        });
+
+        // callback 함수를 boolean type을 return해야함
+        const result2 = students.find(function (student, index) {
+          return student.score === 90;
+        });
+        console.log(result2);
+
+        // 화살표 함수로 정리
+        const result3 = students.find((student) => student.score === 90);
+        console.log("Q5:", result3);
+        console.log("---------------");
+      }
+
+      // Q6. make an array of enrolled students
+      {
+        const result = students.filter((student) => student.enrolled);
+        console.log("Q6:", result);
+        console.log("---------------");
+      }
+
+      // Q7. make an array containing only the students' scores
+      // result should be: [45, 80, 90, 66, 88]
+      {
+        // 내가 푼것 - 배열 전체가 나오게 됨
+        function newUserMap(student) {
+          return {
+            score: student.score,
+          };
+        }
+
+        let userList = students.map(newUserMap);
+        console.log("Q7:", userList);
+
+        // 답
+        // 배열에 있는 값을 정의한 함수를 통해 원하는 값으로 변경하는 것 : MAP !!!
+        const result = students.map((student) => student.score * 2);
+        console.log("Q7:", result);
+        console.log("---------------");
+      }
+
+      // Q8. check if there is a student with the score lower than 50
+      {
+        //  내가 푼것 - 50점 보다 낮은게 누군지 나옴
+        const result = students.filter((student) => student.score < 50);
+        console.log(result);
+
+        // 답
+        // 조건에 만족되는게 하나라도 있는지 확인하는 경우는 some을 사용
+        console.log(students.some((student) => student.score < 50));
+
+        // 모든 학생들의 점수가 50점보다 낮아야 true가 나옴
+        // 모든 학생들의 조건이 만족되어야 하는것을 확인하려면 every를 사용
+        console.log(
+          "Q8:",
+          students.every((student) => student.score < 50)
+        );
+        console.log("---------------");
+      }
+
+      // Q9. compute students' average score
+      {
+        // 내가 푼거
+        const score = students.map((student) => student.score);
+        console.log(score);
+        console.log(score.length);
+
+        const sum = score.reduce(function add(accumulator, currentValue) {
+          return accumulator + currentValue;
+        }, 0);
+        console.log("Q9:", sum / score.length);
+        console.log("---------------");
+
+        // Reduce api 설명
+        // Reduce는 배열을 돌면서 하나씩 값을 더하는 경우 사용됨
+        // reduceRight은 배열의 제일 마지막 요소부터 시작함
+        // prev는 이전의 callback함수에서 return 된 값이 전달되어져 옴
+        // curr는 배열의 item을 순차적으로 전달받음
+        const result = students.reduceRight((prev, curr) => {
+          console.log(prev);
+          console.log(curr);
+          console.log("=====");
+          return prev + curr.score;
+        }, 0); // 초기 값이 0 부터 시작됨을 의미
+        console.log("Q9:", result / students.length);
+        console.log("---------------");
+      }
+
+      // Q10. make a string containing all the scores
+      // result should be: '45, 80, 90, 66, 88'
+      {
+        // 학생의 정보에 관한 배열을 학생의 점수에 관한 배열로 변환함!! (map을 사용)
+        // join을 이용해서 string으로 변환함
+
+        const score = students.map((student) => student.score).join();
+
+        console.log("Q10:", score);
+        console.log("---------------");
+
+        // 함수를 묶어서 사용할 수 있음(함수형 프로그래밍)
+        // 점수가 50점 이상인 학생들 filtering
+        const score2 = students
+          .map((student) => student.score)
+          .filter((score) => score >= 50)
+          .join();
+
+        console.log("Q10-1:", score2);
+        console.log("---------------");
+      }
+
+      // Bonus! do Q10 sorted in ascending order
+      // result should be: '45, 66, 80, 88, 90'
+      {
+        const score = students.map((student) => student.score);
+
+        function numbersortAsc(a, b) {
+          return a - b;
+        }
+        console.log(score.sort(numbersortAsc));
+      }
+    </script>
+  </body>
+</html>

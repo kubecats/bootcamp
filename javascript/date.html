@@ -17,20 +17,20 @@
       console.log("getFullYear:", now.getFullYear());
       console.log("getMonth:", now.getMonth() + 1);
       console.log("getDate:", now.getDate());
-      console.log("getDay:", now.getDay());
+      console.log("getDay:", now.getDay()); //요일을 의미함, 월요일1, 화요일2
       console.log("getHours:", now.getHours());
       console.log("getMinutes:", now.getMinutes());
       console.log("getSeconds:", now.getSeconds());
       console.log("getMilliseconds:", now.getMilliseconds());
 
       // 1970년 1월 1일 기준으로 오늘까지의 날짜를 밀리세컨드로 바꿈
-      console.log(now.getTime());
+      console.log("getTime:", now.getTime());
 
       now.setFullYear(2021); // 2021년도로 날짜를 바꿈, 월, 일등도 set으로 바꿀 수 있음, 거의 안쓰임
-      console.log(now);
+      console.log("setFullYear2021:", now);
 
       let date = new Date("2022-01-30 11:11:11");
-      console.log(date);
+      console.log("지정 Date:", date);
 
       // 오늘 기준으로 몇일 전 날짜 찾는 함수 정의 -> 가져다가 쓰면 됨, 많이 사용하게 됨
       function getIntervalDate(day) {
@@ -42,11 +42,12 @@
       }
 
       // 30일 전 날짜
-      console.log(getIntervalDate(-30));
+      console.log("30일 전 날짜:", getIntervalDate(-30));
 
-      // YYYY-MM-DD
+      // YYYY-MM-DD 형식으로 날짜 표현 하는 법
       let year = now.getFullYear();
       let month = now.getMonth() + 1;
+      // 이렇게 해도 되나 아래와 같이 padStart를 활용할 것
       //   if (month < 10) month = "0" + month;
       let day = now.getDate();
 
