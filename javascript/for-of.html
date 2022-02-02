@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // for-of는 배열의 값을 가져옴, 실무에서 for-loop 대신 배열의 요소를 가져오는데 많이 사용함
+      // for-in은 배열의 index를 가져옴
+      let brands = ["애플", "구글", "메타", "아마존", "네이버", "카카오"];
+      for (const brand of brands) {
+        console.log(brand);
+      }
+
+      //   for-of를 통해 문자열의 문자 하나하나를 가져올수 있음
+      const lang = "JavaScript";
+      for (const char of lang) {
+        console.log(char);
+      }
+
+      // 숫자의 값들을 하나씩 출력하기
+      let num = 12345;
+
+      // 숫자를 string 형태로 만드는 방법
+      let numString = num + "";
+      for (const char of numString) {
+        console.log(char);
+      }
+
+      let numString2 = num.toString();
+
+      for (const char of numString2) {
+        console.log(char);
+      }
+    </script>
+  </body>
+</html>

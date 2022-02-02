@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <script></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 반복문
+      // 특정 코드 불록을 특정 회수 만큼 반복해서 실행되게 만듦
+
+      let brands = ["애플", "구글", "메타", "아마존", "네이버", "카카오"];
+      console.log(brands[0]);
+      console.log(brands[1]);
+      console.log(brands[2]);
+      console.log(brands[3]);
+      console.log(brands[4]);
+      console.log(brands[5]);
+      console.log(brands[6]); //undefined
+
+      //    반복문 : for loop
+      //   for (statement1; statement2; statement3) {
+      //     //코드 블록
+      //   }
+      // statement1 : 코드 블록을 실행하기 전에 무조건 한번 실행
+      // statement2 : 코드 블록을 실행시킬 조건
+      // statement3 : 코드 블록을 실행한 후 실행됨
+
+      // for문에 length로 넣어야 배열을 안돌아서 성능면으로 우수
+      const length = brands.length;
+
+      for (let index = 0; index < length; index++) {
+        console.log(brands[index]);
+      }
+
+      //    배열 안에 object 가 있는 형태
+      const productList = [
+        // 음료 리스트
+        {
+          name: "솔의눈",
+          price: 700,
+        },
+        {
+          name: "커피",
+          price: 700,
+        },
+        {
+          name: "파워레이드",
+          price: 1200,
+        },
+        {
+          name: "오렌지",
+          price: 1000,
+        },
+        {
+          name: "보리차",
+          price: 1200,
+        },
+        {
+          name: "밀키스",
+          price: 800,
+        },
+      ];
+
+      const inputCoin = 800;
+
+      let len = productList.length;
+      let sum = 0;
+      for (let i = 0; i < len; i++) {
+        if (productList[i].price <= inputCoin) {
+          console.log("자판기:", productList[i].name);
+        }
+        sum += productList[i].price;
+      }
+
+      console.log("sum:", sum);
+    </script>
+  </body>
 </html>

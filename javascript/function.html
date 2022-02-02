@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <!-- <script src="js/calculator.js"></script>
-        <script src="js/common.js"></script> -->
-        <script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 같은 함수의 경우, 아래에 있는 스크립트의 함수가 우선순위 높음 -->
+    <script src="js/common.js"></script>
+    <script src="js/calculator.js"></script>
 
-            let n1=3;
-            let n2=5;
+    <script>
+      let n1 = 3;
+      let n2 = 5;
+      let sum = n1 + n2;
 
-            //더하기 함수
-            function plus(n1,n2){
-                let sum = n1+n2;
-                return sum;
-            }
+      // 함수 표현식 (변수형식)
+      // 호출하는 위치보다 밑에 있으면 에러가 발생함
+      //   let add = function (n1, n2) {
+      //     return n1, n2;
+      //   };
+      console.log(add(5, 7));
 
-            let sum3 = plus(12,34);
+      let sum3 = plus(12, 34);
 
-            console.log(sum3);
-            console.log(plus(5,7));
+      console.log(sum3);
+      console.log(plus(5, 7));
 
-            //function add(n1,n2){
-            //    return n1+n2;
-            //}
+      // 함수 선언식
+      // 코드 호출하는게 위에 있어도 에러가 안남
+      //  변수 선언하는 것은 순서가 바뀌면 에러가 남
+      function plus(n1, n2) {
+        let sum = n1 + n2;
+        return sum;
+      }
 
-            function minus(n1,n2){
-                return n1-n2;
-            }
+      //   Function 생성자 함수
+      let add2 = new Function("n1", "n2", "return n1+n2;");
 
-            function multiple(n1,n2){
-                return n1*n2;
-            }
+      //   장점은 다음과 같이 동적으로 return값을 이용할 수 있음
+      const operator = "+";
+      let calculator2 = new Function(
+        "n1",
+        "n2",
+        "return n1" + operator + "n2;"
+      );
+      console.log(add2(1, 2));
+      console.log(calculator2(1, 2));
 
-            function divide(n1,n2){
-                return n1/n2;
-            }
+      // 함수를 사용하는 이유는 코드의 재활용 및 유지보수, 운영의 편리성
+      function taxAmount(amount) {
+        const tax = 0.1; //부가세는 현재 10%
+        return amount * tax;
+      }
 
-            //함수 선언식
-            let add = function (n1,n2){
-                return n1,n2;
-            }
-
-            console.log(add(5,7));
-
-
-        </script>
-    </body>
+      console.log(taxAmount(1000));
+    </script>
+  </body>
 </html>
