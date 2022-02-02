@@ -13,7 +13,7 @@
       {
         const fruits = ["apple", "banana", "orange"];
         const result = fruits.join(", ");
-        console.log(result);
+        console.log("Q1:", result);
         console.log("-----------------");
       }
 
@@ -23,9 +23,10 @@
         console.log(fruits);
 
         const result = fruits.split(",", 2);
+        console.log("Q2:", result); //, 을 넣어야 string을 array로 받음, 개수 제한 가능
+
         const result2 = fruits.split();
-        console.log(result); //, 을 넣어야 string을 array로 받음, 개수 제한 가능
-        console.log(result2); //string을 하나의 array의 요소로 받음
+        console.log("Q2:", result2); //string을 하나의 array의 요소로 받음
         console.log("-----------------");
       }
 
@@ -33,7 +34,7 @@
       {
         const array = [1, 2, 3, 4, 5];
 
-        // 내가 푼거
+        // 내가 푼거 : 내림차순
         function numbersortDsc(a, b) {
           return b - a;
         }
@@ -63,9 +64,9 @@
         // console.log(array);
 
         // 내가 푼거
-        // console.log(array.shift());
-        // console.log(array.shift());
-        // console.log(array);
+        console.log(array.shift());
+        console.log(array.shift());
+        console.log(array);
       }
 
       class Student {
@@ -95,17 +96,18 @@
           }
         }
 
-        console.log(newStudent);
+        console.log("Q5:", newStudent);
 
+        //답
         const result = students.find(function (student, index) {
-          console.log(student, index);
+          console.log("index:", student, index);
         });
 
         // callback 함수를 boolean type을 return해야함
         const result2 = students.find(function (student, index) {
           return student.score === 90;
         });
-        console.log(result2);
+        console.log("Q5:", result2);
 
         // 화살표 함수로 정리
         const result3 = students.find((student) => student.score === 90);
@@ -134,7 +136,7 @@
         console.log("Q7:", userList);
 
         // 답
-        // 배열에 있는 값을 정의한 함수를 통해 원하는 값으로 변경하는 것 : MAP !!!
+        // MAP : 배열에 있는 값을 정의한 함수를 통해 원하는 값으로 변경
         const result = students.map((student) => student.score * 2);
         console.log("Q7:", result);
         console.log("---------------");
@@ -162,13 +164,16 @@
       // Q9. compute students' average score
       {
         // 내가 푼거
+        // 학생 데이터에서 점수만 배열로 만들기 -> Map
         const score = students.map((student) => student.score);
         console.log(score);
         console.log(score.length);
 
+        // 배열 요소의 합계 -> Reduce
         const sum = score.reduce(function add(accumulator, currentValue) {
           return accumulator + currentValue;
         }, 0);
+
         console.log("Q9:", sum / score.length);
         console.log("---------------");
 
@@ -190,7 +195,7 @@
       // Q10. make a string containing all the scores
       // result should be: '45, 80, 90, 66, 88'
       {
-        // 학생의 정보에 관한 배열을 학생의 점수에 관한 배열로 변환함!! (map을 사용)
+        // 학생의 정보에 관한 배열을 학생의 점수에 관한 배열로 변환함!!(map을 사용)
         // join을 이용해서 string으로 변환함
 
         const score = students.map((student) => student.score).join();
