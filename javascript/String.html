@@ -85,6 +85,38 @@
       console.log("month2:", month2);
       console.log("day2:", day2);
 
+      // replace() 함수
+      // 앞에 한게만 바뀜
+      str = "Welcome Jeju! Jeju!";
+      console.log("replace: ", str.replace("Jeju", "Seoul"));
+
+      // 정규식을 통해 모든 Jeju를 Seoul로 바꿔줌
+      console.log("replace: ", str.replace(/Jeju/g, "Seoul"));
+
+      // toUpperCase(), toLowerCase
+      // CSS에서 바뀐다고 바껴지는게 아님
+      console.log("toUpperCase: ", str.toUpperCase());
+      console.log("toLowerCase: ", str.toLowerCase());
+
+      // concat()
+      let txt1 = "Hello";
+      let txt2 = "World";
+      let txt3 = txt1 + " " + txt2;
+      console.log("txt3:", txt3);
+      let txt4 = txt1.concat(" ", txt2);
+      console.log("txt4:", txt4);
+
+      // trim()
+      str = " kubecat";
+      console.log("trim: ", str.trim());
+
+      let name = "고 승 원";
+      // 첫번재 공백만 없애줌
+      console.log(name.replace(" ", ""));
+      // 정규식 표현을 통해 공백을 다 없애줌
+      console.log(name.replace(/\s/g, ""));
+
+      // 8과
       // * padStart(), padEnd()
       // string 형태만 사용할 수 있음
       // padEnd()보다는 padStart()를 많이 쓰는 경향이 있음
