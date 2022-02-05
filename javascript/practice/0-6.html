@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //0-6. 홀수의 합과 홀수의 최소값 구하기
+      function solution(arr) {
+        let answer = [];
+
+        // 최소값 구할때는 큰 숫자로 초기화 해놓는것이 좋음
+        let sum = 0,
+          min = Number.MAX_SAFE_INTEGER;
+
+        //   배열의 값을 체크하기 때문에 for-of문을 사용
+        for (let x of arr) {
+          if (x % 2 == 1) {
+            sum += x;
+            if (x < min) {
+              min = x;
+            }
+          }
+        }
+        answer.push(sum);
+        answer.push(min);
+        return answer;
+      }
+      arr = [12, 77, 38, 41, 53, 92, 85];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
