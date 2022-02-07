@@ -8,17 +8,13 @@
   </head>
   <body>
     <script>
-      //#0-17. 중복 단어 없애서 배열 만들기
-      // filter: callback 함수가 true를 만족시키는 value만 return하여 새로운 배열을 생성
+      //#2-2. 유효한 팰린드롬
       function solution(s) {
         let answer;
-        answer = s.filter(function (v, i) {
-          return s.indexOf(v) === i;
-        });
+
         return answer;
       }
-
-      str = ["good", "time", "good", "time", "student"];
+      let str = "gooG";
       console.log(solution(str));
     </script>
   </body>
