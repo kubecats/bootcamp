@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclico="getData();">조회</button>
+    <button onclico="postData();">생성</button>
+    <script>
+      function getData() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3000/posts");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send();
+
+        xhr.onload = () => {
+          console.log(xhr);
+          if (xhr.status === 200) {
+            const res = JSON.parse(xhr.response);
+            console.log(res);
+          } else {
+            console.log(xhr.status, shr.statusText);
+          }
+        };
+      }
+
+      function postData() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/posts");
+        xhr.setRequestHeader("content-type", "application/json;charset=UTF-8");
+        const data = {
+          id: 1,
+          title: "xmlhttprequest",
+          author: "john doe",
+        };
+        xhr.send(JSON.stringify(data));
+
+        xhr.onload = () => {
+          if (xhr.status === 201) {
+            const res = JSON.parse(xhr.response);
+            console.log(res);
+          } else {
+            console.log(xhr.status, shr.statusText);
+          }
+        };
+      }
+    </script>
+  </body>
+</html>
