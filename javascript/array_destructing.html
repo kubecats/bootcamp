@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getGeoLocation() {
+        //   위도, 경도 정보를 주로 배열형태로 보내줌, object의 key, value가 아닌
+        return [112.1234, 65.2334];
+      }
+
+      //   let location = getGeoLocation();
+      //   console.log(location[0]);
+      //   console.log(location[1]);
+      //   코드 에러남 확인해보기, 가독성이 좋지 않다.
+
+      let [latitude, longitude] = getGeoLocation();
+
+      console.log(latitude);
+      console.log(longitude);
+    </script>
+  </body>
+</html>

@@ -1,6 +1,35 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" },
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "xmlhttprequest",
+      "author": "jone doe",
+      "id": 3
+    },
+    {
+      "title": "xmlhttprequest",
+      "author": "jone doe",
+      "id": 4
+    },
+    {
+      "title": "xmlhttprequest",
+      "author": "john doe",
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
   "users": {}
 }

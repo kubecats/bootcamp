@@ -7,8 +7,54 @@
     <title>Document</title>
   </head>
   <body>
+    <button onclick="getData();">조회</button>
+    <button onclick="postData();">생성</button>
+    <button onclick="putData();">생성</button>
+    <button onclick="deleteData();">삭제</button>
     <script>
-      fetch("http://localhost:3000/posts").then();
+      function getData() {
+        fetch("http://localhost:3000/posts")
+          .then((response) => response.json())
+          .then((json) => console.log(json));
+      }
+
+      function postData() {
+        fetch("http://localhost:3000/posts", {
+          method: "POST",
+          body: JSON.stringify({
+            title: "xmlhttprequest",
+            author: "john doe",
+          }),
+          headers: {
+            "content-type": "application/json;charset=UTF-8",
+          },
+        })
+          .then((response) => response.json())
+          .then((json) => console.log(json));
+      }
+
+      function putData() {
+        fetch("http://localhost:3000/posts/3", {
+          method: "PUT",
+          body: JSON.stringify({
+            title: "xmlhttprequest",
+            author: "john doe",
+          }),
+          headers: {
+            "content-type": "application/json;charset=UTF-8",
+          },
+        })
+          .then((response) => response.json())
+          .then((json) => console.log(json));
+      }
+
+      function deleteData() {
+        fetch("http://localhost:3000/posts/3", {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((json) => console.log(json));
+      }
     </script>
   </body>
 </html>

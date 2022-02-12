@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <button onclick="getData()">조회</button>
+  <body>
+    <script>
+      async function getData() {
+        const res1 = await fetch("http://localhost:3000/posts");
+        // const res1Json = res1.json();
+        const res1Json = await res1.json();
+
+        console.log(res1Json);
+      }
+    </script>
+  </body>
+</html>

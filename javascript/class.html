@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // class 클래스명{
+      //     constructor(){
+
+      //     }
+      // }
+
+      // 모델명
+      // 자동차생산년도
+      // 자동차 타입
+      // 자동차 가격
+      const car = {
+        modelName: "",
+      };
+      class Car {
+        constructor(modelName, modelYear, type, price) {
+          this.modelName = modelName;
+          this.modelYear = modelYear;
+          this.type = type;
+          this.price = price;
+        }
+        getModelName() {
+          return this.modelName;
+        }
+        getPrice() {
+          return this.price;
+        }
+        setPrice(price) {
+          this.price = price;
+        }
+      }
+
+      class ElectricCar extends Car {
+        constructor(modelName, modelYear, type, price, chargeTime, distance) {
+          // 상속받으려면 무조건 super call 해야함
+          super(modelName, modelYear, type, price, chargeTime);
+          this.chargeTime = chargeTime;
+          this.distance = distance;
+        }
+        getChargeTime() {
+          return this.chargeTime;
+        }
+        getDistance() {
+          return this.distance;
+        }
+      }
+      let ionic = new ElectricCar("아이오닉", 2021, "E", 4000, 120, 450);
+      console.log(ionic.getModelName());
+      console.log(ionic.getDistance());
+
+      //   let ionic = new Car("아이오닉", 2021, "E", 4000);
+      //   console.log(ionic.getModelName());
+      //   ionic.setPrice(4200);
+
+      //   console.log(ionic.getPrice());
+      //   let genesis = new Car("제네시스", 2022, "G", 7000);
+      //   console.log(genesis.getModelName());
+      //   console.log(genesis.getPrice());
+    </script>
+  </body>
+</html>

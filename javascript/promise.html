@@ -41,8 +41,34 @@
           }
         };
       }
-      const data = getData();
-      console.log(data); //undefined로 값을 불러오지 못함, 함수 안에 있어야 값을 불러올 수 있음, 이를 해결하기 위하여 promise를 사용함
+
+      //   const data = getData();
+      //   console.log(data); //undefined로 값을 불러오지 못함, 함수 안에 있어야 값을 불러올 수 있음, 이를 해결하기 위하여 promise를 사용함
+      //   console.log("getData 다음에 실행");
+
+      function getData2(url) {
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", url);
+          xhr.setRequestHeader("content-type", "application/json");
+          xhr.send();
+
+          xhr.onload = () => {
+            //   console.log(xhr);
+            if (xhr.status === 200) {
+              const res = JSON.parse(xhr.response);
+              console.log(res);
+            } else {
+              console.log(xhr.status, xhr.statusText);
+            }
+          };
+        });
+      }
+      // 호출하는쪽에서 코드를 짤 수 있음
+      getData2("http://localhost:3000/posts").then((res) => console.log(res));
+      getData2("http://localhost:3000/comments").then((res) =>
+        console.log(res)
+      );
       console.log("getData 다음에 실행");
 
       // front-end개발자가 서버로 데이터를 전송
