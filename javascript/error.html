@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 에러 핸들링
+      // try catch를 항상 사용하지는 않고
+      // 내부에 컨트롤 가능한 부분은 미사용, 컨트롤 불가한 부분 사용
+      // 날씨 정보 못 긁어오는 것 등 때문에 코드 전체 에러 나면 안되므로
+      try {
+        console.log("아직 에러가 없어요");
+        getWeather(); // 에러
+        // 기상청 날씨 조회 API
+        console.log("에러 다음 코드");
+      } catch (error) {
+        console.log(error);
+      }
+
+      console.log("try/catch구문 밖의 코드");
+
+      // 10초 후 실햏하는 경우, 이 경우 에러가 잡히지 않는다.
+      //   try {
+      //     setTimeout(() => {
+      //       getWeather(); // 에러
+      //     }, 1000);
+      //   } catch (error) {}
+
+      setTimeout(() => {
+        try {
+          getWeather();
+        } catch (error) {
+          console.log(error);
+        }
+      }, 1000);
+
+      try {
+        getWeather();
+      } catch (error) {
+        console.log(error.name);
+        console.log(error.message);
+        if (error instanceof ReferenceError) {
+        } else if (error instanceof TypeError) {
+        }
+      } finally {
+        console.log("에러가 나든 안나든 실행");
+      }
+    </script>
+  </body>
+</html>
