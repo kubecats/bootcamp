@@ -32,6 +32,7 @@
       .alert {
         color: red;
       }
+      /* 반응형 웹으로 설정, 700px 보다 큰 경우 가로로 떨어지도록 */
       @media screen and (max-width: 700px) {
         .row {
           flex-direction: column;
@@ -51,16 +52,23 @@
         <label for="name">Gender</label>
       </div>
       <div class="col-8">
+        <!-- male을 기본값으로 체크해놓은 상태 -->
         <input type="radio" name="gender" id="male" value="male" checked />
         <label for="female">남자</label>
-        <input type="radio" name="gender" id="male" value="female" />
+        <input type="radio" name="gender" id="female" value="female" />
         <label for="female">여자</label>
       </div>
       <div class="col-4">
         <label for="name">Company</label>
       </div>
       <div class="col-8">
-        <input type="text" name="" id="company" class="form-contorl" />
+        <input
+          type="text"
+          name=""
+          id="company"
+          class="form-contorl"
+          onkeyup="checkEnter(event,'email');"
+        />
       </div>
       <div class="col-4">
         <label for="email">EMail</label>
@@ -72,7 +80,9 @@
           id="email"
           class="form-contorl"
           onblur="checkEmail();"
+          onkeyup="checkEnter(event,'phone');"
         />
+        <!-- default로는 display: none으로 보이지 않음 -->
         <div id="emailMsg" class="alert" style="display: none">
           올바른 형식의 이메일을 입력하세요.
         </div>
@@ -86,12 +96,14 @@
           name=""
           id="phone"
           class="form-contorl"
+          placeholder="010-0000-0000"
           onblur="checkPhone();"
+          onkeyup="checkEnterForPhone(event);"
         />
       </div>
 
       <div id="phoneMsg" class="alert" style="display: none">
-        올바른 형식의 전화번호를 입력하세요.
+        올바른 형식의 연락처를 입력하세요.
       </div>
 
       <div class="col-4">
@@ -99,14 +111,10 @@
       </div>
       <div class="col-8">
         <button onclick="openDaumAPI();">주소찾기</button>
+
+        <!-- address와 zonecode는 사용자가 직접 입력하면 안되기 때문에 readonly를 입력 -->
         <input type="text" name="" id="zonecode" style="width: 80px" readonly />
-        <input
-          type="address"
-          name=""
-          id="address"
-          class="form-contorl"
-          readonly
-        />
+        <input type="text" name="" id="address" class="form-contorl" readonly />
       </div>
     </div>
     <div class="text-center">
@@ -114,17 +122,20 @@
       <button onclick="gotToList();">목록</button>
       <button onclick="doReset();">초기화</button>
     </div>
+
+    <!-- 다음 주소API 가져오기 -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <script>
       async function doCreate() {
-        const name = document.querySelector("#name").value.trim;
-        const gender = document.querySelector("[name=gender]:checked").value
-          .trim;
-        const company = document.querySelector("#company").value.trim;
-        const email = document.querySelector("#email").value.trim;
-        const phone = document.querySelector("#phone").value.trim;
-        const address = document.querySelector("#address").value.trim;
+        // css에서 id를 #name, company 등으로 만들었었음
+        // 입력하는 값의 공백을 삭제하기 위하여 trim 을 사용함
+        const name = document.querySelector("#name").value.trim();
+        const gender = document.querySelector("[name=gender]:checked").value;
+        const company = document.querySelector("#company").value.trim();
+        const email = document.querySelector("#email").value.trim();
+        const phone = document.querySelector("#phone").value.trim();
+        const address = document.querySelector("#address").value.trim();
 
         console.log(name);
         console.log(gender);
@@ -137,17 +148,25 @@
           return alert("Name을 입력하세요.");
         }
         if (company === "") {
-          return alert("company 입력하세요.");
-        }
-        const regexpEmail = /^([a-z]+\d*)+(\.?[a-z]+)+@[a-z]+(\.[a-z]{2,3})+$/;
-        if (!regexpEmail.test(email)) {
-          return alert("올바른 형식의 Email을 입력하세요.");
+          return alert("Company를 입력하세요.");
         }
 
-        const regexpPhone = /^010-\d{3}-\d{3,4}-\d{4}$/;
-        if (!regexpPhone.test(phone)) {
-          return alert("올바른 형식의 Phone을 입력하세요.");
+        if (email === "") {
+          return alert("Email 입력하세요.");
         }
+        // const regexpEmail = /^([a-z]+\d*)+(\.?[a-z]*)+@[a-z]+(\.[a-z]{2,3})+$/;
+        // if (!regexpEmail.test(email)) {
+        //   return alert("올바른 형식의 Email을 입력하세요.");
+        // }
+
+        if (phone === "") {
+          return alert("phone 입력하세요.");
+        }
+
+        // const regexpPhone = /^010-\d{3,4}-\d{4}$/;
+        // if (!regexpPhone.test(phone)) {
+        //   return alert("올바른 형식의 Phone을 입력하세요.");
+        // }
 
         if (address === "") {
           return alert("address 입력하세요.");
@@ -156,12 +175,12 @@
           const res = await fetch("http://localhost:3000/customers", {
             method: "POST",
             body: JSON.stringify({
-              name: name,
-              gender: gender,
-              company: company,
-              email: email,
-              phone: phone,
-              address: address,
+              name,
+              gender,
+              company,
+              email,
+              phone,
+              address,
             }),
             headers: {
               "content-type": "application/json;charset=uTF-8",
@@ -170,7 +189,7 @@
 
           if (res.status === 201) {
             alert("정상적으로 생성되었습니다.");
-            document.location.hred = "dom.html";
+            document.location.href = "dom.html";
           } else {
             alert("고객 정보를 생성하지 못했습니다. 다시 시도하세요.");
           }
@@ -195,8 +214,7 @@
       function checkPhone() {
         const phone = document.querySelector("#phone").value;
         if (phone !== "") {
-          const regexpPhone = /^010-\d{3}-\d{3,4}-\d{4}$/;
-
+          const regexpPhone = /^010-\d{3,4}-\d{4}$/;
           if (!regexpPhone.test(phone)) {
             document.querySelector("#phoneMsg").style.display = "block";
           } else {
@@ -218,19 +236,34 @@
           },
         }).open();
       }
+
       function gotToList() {
         document.location.href = "dom.html";
       }
 
       function doReset() {
-        document.location.reload();
+        // reload를 해도 되고
+        // document.location.reload();
 
+        // reload 하지 않고 값을 일일이 없애줘도 됨
         document.querySelector("#name").value = "";
-        document.querySelector("[name=gender]:checked").valu = "";
+        document.querySelector("[name=gender]:checked").value = "";
         document.querySelector("#company").value = "";
         document.querySelector("#email").value = "";
         document.querySelector("#phone").value = "";
         document.querySelector("#address").value = "";
+      }
+
+      function checkEnter(e, id) {
+        if (e.keyCode === 13) {
+          document.querySelector("#" + id).focus();
+        }
+      }
+
+      function checkEnterForPhone(e) {
+        if (e.keyCode === 13) {
+          openDaumAPI();
+        }
       }
     </script>
   </body>
