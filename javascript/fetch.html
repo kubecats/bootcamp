@@ -12,6 +12,7 @@
     <button onclick="putData();">생성</button>
     <button onclick="deleteData();">삭제</button>
     <script>
+      // fetch가 promise 기능을 갖고 있음
       function getData() {
         fetch("http://localhost:3000/posts")
           .then((response) => response.json())
