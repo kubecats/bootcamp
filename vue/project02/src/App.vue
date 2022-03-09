@@ -1,5 +1,6 @@
 <template>
   <nav>
+    <!-- router-link를 통해 a tag로 변경시킴, href에 들어가는 값 -->
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/hello">Hello</router-link>

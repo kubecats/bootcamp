@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>{{ htmlString }}</div>
+    <!-- html tag를 사용하려면 v-html을 선언해줘야함 -->
     <div v-html="htmlString"></div>
   </div>
 </template>
