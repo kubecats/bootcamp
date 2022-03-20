@@ -128,6 +128,44 @@ const routes = [
       import(
         /* webpackChunkName: "event" */ '../views/2_event/EventChangeView.vue'
       )
+  },
+  {
+    path: '/event/key',
+    name: 'EventKeyView',
+    component: () =>
+      import(
+        /* webpackChunkName: "event" */ '../views/2_event/EventKeyView.vue'
+      )
+  },
+  {
+    path: '/extra/if',
+    name: 'RenderingIfView',
+    component: () =>
+      import(
+        /* webpackChunkName: "event" */ '../views/3_extra/RenderingIfView.vue'
+      )
+  },
+  {
+    path: '/extra/show',
+    name: 'RenderingShowView',
+    component: () =>
+      import(
+        /* webpackChunkName: "event" */ '../views/3_extra/RenderingShowView.vue'
+      )
+  },
+  {
+    path: '/extra/computed',
+    name: 'ComputedView',
+    component: () =>
+      import(
+        /* webpackChunkName: "event" */ '../views/3_extra/ComputedView.vue'
+      )
+  },
+  {
+    path: '/extra/watch',
+    name: 'WatchView',
+    component: () =>
+      import(/* webpackChunkName: "event" */ '../views/3_extra/WatchView.vue')
   }
 ]
 
