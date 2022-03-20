@@ -166,6 +166,18 @@ const routes = [
     name: 'WatchView',
     component: () =>
       import(/* webpackChunkName: "event" */ '../views/3_extra/WatchView.vue')
+  },
+  {
+    path: '/reuse/page',
+    name: 'PageView',
+    component: () =>
+      import(/* webpackChunkName: "event" */ '../views/4_reuse/PageView.vue')
+  },
+  {
+    path: '/reuse/list',
+    name: 'ListView',
+    component: () =>
+      import(/* webpackChunkName: "event" */ '../views/4_reuse/ListView.vue')
   }
 ]
 

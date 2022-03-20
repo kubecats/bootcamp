@@ -3,4 +3,7 @@ import App from './App.vue'
 import router from './router' // router폴더 내의 index.js파일을 가져오겠다는 의미
 import store from './store'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.js'
+
 createApp(App).use(store).use(router).mount('#app')
