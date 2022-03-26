@@ -1,13 +1,25 @@
 <template>
   <div class="container">
-    <button class="btn btn-danger" @click="doSearch">조회</button>
-    <simple-grid :headers="headers" :items="drinkList" />
+    <button class="btn btn-danger" ref="btnSearch" @click="doSearch">
+      조회
+    </button>
+    <button class="btn btn-danger" @click="doDelete">삭제</button>
+    <button class="btn btn-danger" @click="doExcel">엑셀다운로드</button>
+    <simple-grid
+      :headers="headers"
+      :items="drinkList"
+      selectType="checkbox"
+      checkedKey="drinkId"
+      changeEventName="change-item2"
+      @change-item2="changeCheckedValue"
+      ref="smGrid"
+    />
   </div>
 </template>
 <script>
 import SimpleGrid from '@/components/fragments/SimpleGrid.vue'
 export default {
-  components: { 'simple-grid': SimpleGrid },
+  components: { SimpleGrid },
   data() {
     return {
       headers: [
@@ -15,7 +27,40 @@ export default {
         { title: '제품명', key: 'drinkName' },
         { title: '가격', key: 'price' }
       ],
-      drinkList: [
+      drinkList: [],
+      checkedItems: [],
+      isShowExcelDownBtn: true
+    }
+  },
+  setup() {
+    // composition api
+  },
+  beforeCreate() {
+    console.log('beforeCreate')
+  },
+  created() {
+    console.log('created')
+  },
+  beforeMount() {
+    console.log('beforeMount')
+  },
+  mounted() {
+    console.log('mounted')
+    this.doSearch()
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate')
+  },
+  updated() {
+    console.log('updated')
+  },
+  beforeUnmount() {},
+  unmounted() {
+    // this.drinkList = null;
+  },
+  methods: {
+    doSearch() {
+      this.drinkList = [
         {
           drinkId: '1',
           drinkName: '코카콜라',
@@ -59,15 +104,18 @@ export default {
           qty: 1
         }
       ]
-    }
-  },
-  setup() {},
-  created() {},
-  mounted() {},
-  unmounted() {},
-  methods: {
-    doSearch() {
-      console.log()
+    },
+    changeCheckedValue(data) {
+      this.checkedItems = data
+      // console.log('부모 컴포넌트', data)
+    },
+    doDelete() {
+      console.log(this.checkedItems)
+      this.$refs.smGrid.sampleData = 'B'
+      this.$refs.smGrid.doPrint()
+    },
+    doExcel() {
+      this.$ExcelFromTable(this.headers, this.drinkList, 'drinklist', {})
     }
   }
 }
