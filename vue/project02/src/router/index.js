@@ -142,7 +142,7 @@ const routes = [
     name: 'RenderingIfView',
     component: () =>
       import(
-        /* webpackChunkName: "event" */ '../views/3_extra/RenderingIfView.vue'
+        /* webpackChunkName: "extra" */ '../views/3_extra/RenderingIfView.vue'
       )
   },
   {
@@ -150,7 +150,7 @@ const routes = [
     name: 'RenderingShowView',
     component: () =>
       import(
-        /* webpackChunkName: "event" */ '../views/3_extra/RenderingShowView.vue'
+        /* webpackChunkName: "extra" */ '../views/3_extra/RenderingShowView.vue'
       )
   },
   {
@@ -158,26 +158,78 @@ const routes = [
     name: 'ComputedView',
     component: () =>
       import(
-        /* webpackChunkName: "event" */ '../views/3_extra/ComputedView.vue'
+        /* webpackChunkName: "extra" */ '../views/3_extra/ComputedView.vue'
       )
   },
   {
     path: '/extra/watch',
     name: 'WatchView',
     component: () =>
-      import(/* webpackChunkName: "event" */ '../views/3_extra/WatchView.vue')
+      import(/* webpackChunkName: "extra" */ '../views/3_extra/WatchView.vue')
+  },
+  {
+    path: '/extra/lifecycle',
+    name: 'LifecycleHookView',
+    component: () =>
+      import(
+        /* webpackChunkName: "extra" */ '../views/3_extra/LifecycleHookView.vue'
+      )
   },
   {
     path: '/reuse/page',
     name: 'PageView',
     component: () =>
-      import(/* webpackChunkName: "event" */ '../views/4_reuse/PageView.vue')
+      import(/* webpackChunkName: "reuse" */ '../views/4_reuse/PageView.vue')
   },
   {
     path: '/reuse/list',
     name: 'ListView',
     component: () =>
-      import(/* webpackChunkName: "event" */ '../views/4_reuse/ListView.vue')
+      import(/* webpackChunkName: "reuse" */ '../views/4_reuse/ListView.vue')
+  },
+  {
+    path: '/reuse/slot',
+    name: 'SlotView',
+    component: () =>
+      import(/* webpackChunkName: "reuse" */ '../views/4_reuse/SlotView.vue')
+  },
+  {
+    path: '/reuse/parent',
+    name: 'ParentView',
+    component: () =>
+      import(/* webpackChunkName: "reuse" */ '../views/4_reuse/ParentView.vue')
+  },
+  {
+    path: '/advanced/provide',
+    name: 'ProvideView',
+    component: () =>
+      import(
+        /* webpackChunkName: "advanced" */ '../views/5_advanced/ProvideView.vue'
+      )
+  },
+  {
+    path: '/advanced/directive',
+    name: 'CustomDirectiveView',
+    component: () =>
+      import(
+        /* webpackChunkName: "advanced" */ '../views/5_advanced/CustomDirectiveView.vue'
+      )
+  },
+  {
+    path: '/advanced/mixin',
+    name: 'MixinView',
+    component: () =>
+      import(
+        /* webpackChunkName: "advanced" */ '../views/5_advanced/MixinView.vue'
+      )
+  },
+  {
+    path: '/advanced/plugin',
+    name: 'PluginView',
+    component: () =>
+      import(
+        /* webpackChunkName: "advanced" */ '../views/5_advanced/PluginView.vue'
+      )
   }
 ]
 
