@@ -1,20 +1,39 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '../store'
 import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/LoginView.vue'
 // import AboutView from '../views/AboutView.vue'
 // import HelloView from '../views/HelloView.vue'
 
-// route라는 배열에 각각 object형식으로 들어가 있다.
-// 페이지 새로 만들때마다 route에 추가해줘야함
 const routes = [
   {
     path: '/',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/home',
     name: 'home',
     component: HomeView
   },
   {
+    path: '/login',
+    name: 'login2',
+    component: LoginView
+  },
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   component: AboutView
+  // },
+  // {
+  //   path: '/hello',
+  //   name: 'hello',
+  //   component: HelloView
+  // }
+  {
     path: '/about',
     name: 'about',
-    // component: AboutView
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -26,7 +45,6 @@ const routes = [
   {
     path: '/hello',
     name: 'hello',
-    // component: HelloView
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -230,12 +248,95 @@ const routes = [
       import(
         /* webpackChunkName: "advanced" */ '../views/5_advanced/PluginView.vue'
       )
+  },
+  {
+    path: '/vuex/todo',
+    name: 'TodoView',
+    component: () =>
+      import(/* webpackChunkName: "vuex" */ '../views/6_vuex/TodoView.vue')
+  },
+  {
+    path: '/template/listtodetail',
+    name: 'ListToDetailView',
+    component: () =>
+      import(
+        /* webpackChunkName: "template" */ '../views/7_template/ListToDetailView.vue'
+      )
   }
+  // {
+  //   path: '/template/detail',
+  //   name: 'DetailView',
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "template" */ '../views/7_template/DetailView.vue'
+  //     )
+  // },
+  // {
+  //   path: '/template/create',
+  //   name: 'CreateView',
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "template" */ '../views/7_template/CreateView.vue'
+  //     )
+  // },
+  // {
+  //   path: '/template/change',
+  //   name: 'ChangeView',
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "template" */ '../views/7_template/ChangeView.vue'
+  //     )
+  // },
+  // {
+  //   path: '/template/singleedit',
+  //   name: 'SingleEditView',
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "template" */ '../views/7_template/SingleEditView.vue'
+  //     )
+  // },
+  // {
+  //   path: '/template/multipleedit',
+  //   name: 'MultipleEditView',
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "template" */ '../views/7_template/MultipleEditView.vue'
+  //     )
+  // },
+  // {
+  //   path: '/template/masterdetail',
+  //   name: 'MasterDetailView',
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "template" */ '../views/7_template/MasterDetailView.vue'
+  //     )
+  // },
+  // {
+  //   path: '/template/shuttle',
+  //   name: 'ShuttleView',
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "template" */ '../views/7_template/ShuttleView.vue'
+  //     )
+  // }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/') {
+    next()
+  } else {
+    if (store.getters['user/isLogin']) {
+      next()
+    } else {
+      store.commit('/user/logout')
+      next('/')
+    }
+  }
 })
 
 export default router
