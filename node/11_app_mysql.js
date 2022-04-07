@@ -1,6 +1,8 @@
 // express
 const express = require("express");
 const app = express();
+
+// index.js가 생략되어있어도 /mysql/index.js 를 가져온다는 의미와 동일함
 const mysql = require("./mysql");
 
 app.use(

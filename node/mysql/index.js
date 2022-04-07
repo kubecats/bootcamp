@@ -1,6 +1,10 @@
 const mysql = require("mysql");
 const sql = require("./sql");
 
+// http://npmjs.com/package/mysql
+// 여기에서 사용예제하는 방식으로 DB커넥션을 맺지는 않음
+// 동시에 10개의 커넥션을 허용하는 pool 을 미리 만듦
+
 const pool = mysql.createPool({
   host: "localhost",
   port: 3306,
@@ -25,6 +29,7 @@ const query = async (alias, values) => {
   );
 };
 
+// 다른 javascript에서도 사용할 수 있도록 처리
 module.exports = {
   query,
 };
