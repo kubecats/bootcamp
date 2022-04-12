@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 // filesystem
-// 비동기식 읽기
+// readFile : 비동기식 읽기 : 읽는게 끝나는 순간, data를 출력
 fs.readFile("./sample/text.txt", "utf-8", (err, data) => {
   if (err) {
     throw err;
@@ -9,11 +9,11 @@ fs.readFile("./sample/text.txt", "utf-8", (err, data) => {
   console.log(data);
 });
 
-// 동기식 읽기
+// readFileSync: 동기식 읽기
 const data = fs.readFileSync("./sample/text.txt", "utf-8");
 console.log(data);
 
-// 비동기식 읽기
+// writeFile: 비동기식 쓰기
 const txt = "파일 쓰기 테스트";
 fs.writeFile("./sample/text_w.txt", txt, "utf8", (err) => {
   if (err) {
@@ -23,5 +23,5 @@ fs.writeFile("./sample/text_w.txt", txt, "utf8", (err) => {
   console.log(data2);
 });
 
-// 동기식 쓰기
+// writeFileSync: 동기식 쓰기
 fs.writeFileSync("./sample/text_w.txt", txt, "utf8");

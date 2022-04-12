@@ -6,5 +6,11 @@ const config = {
   host: "smtp.gmail.com",
   port: 587,
   secure: false,
-  auth: process.env.GooGLE_MAIL,
+  auth: process.env.GOOGLE_MAIL,
+  pass: process.env.GOOGLE_PASSWORD,
+};
+
+const send = async (data) => {
+  const transporter = nodemailer.createTransport(config);
+  transporter.sendMail(data, (err, info) => {});
 };

@@ -15,7 +15,6 @@ app.get("/ab+cd", (req, res) => {
   res.send("ab+cd");
 });
 
-// *
 app.get("/ab*cd", (req, res) => {
   res.send("ab*cd");
 });

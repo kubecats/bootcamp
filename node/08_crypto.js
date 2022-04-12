@@ -2,6 +2,7 @@ const crypto = require("crypto");
 // 비밀번호에는 암호화 적용
 
 // 일반적인 암호화 알고리즘
+// sha512: 암호화 알고리즘, base64: 인코딩방법
 console.log(crypto.createHash("sha512").update("pw1234").digest("base64"));
 console.log(crypto.createHash("sha512").update("pw1234").digest("hex"));
 // 9iSeOd1vv2qinR2UM5Aog5LmqBncF/oFeTTsPUjqwGoG3lG232280LqAScE7FR7HHe4K0gyedCN7iZDZl+NZaA==
@@ -24,6 +25,7 @@ const createSalt = () => {
 const createCryptoPassword = async (plainPassword) => {
   const salt = createSalt();
   //   암호화할 문자열, salt, 반복횟수, 출력할 바이트수, 해쉬 알고리즘
+  // 정상적으로 실행되면 callback함수가 실행됨
   return new Promise((resolve, reject) => {
     crypto.pbkdf2(plainPassword, salt, 100000, 64, "sha512", (err, key) => {
       if (err) reject(err);
@@ -33,7 +35,6 @@ const createCryptoPassword = async (plainPassword) => {
 };
 
 const getCryptoPassword = async (plainPassword, salt) => {
-  //   암호화할 문자열, salt, 반복횟수, 출력할 바이트수, 해쉬 알고리즘
   return new Promise((resolve, reject) => {
     crypto.pbkdf2(plainPassword, salt, 100000, 64, "sha512", (err, key) => {
       if (err) reject(err);
@@ -45,4 +46,3 @@ const getCryptoPassword = async (plainPassword, salt) => {
 // 사용자 아이디, 암호화된 비밀번호, salt 문자열
 // 사용자 아이디, 비밀번호 입력
 // -> salt
-//

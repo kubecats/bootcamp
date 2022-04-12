@@ -1,4 +1,3 @@
-// express
 const express = require("express");
 const app = express();
 
@@ -13,6 +12,8 @@ app.listen(3000, () => {
 });
 
 // http://localhost:3000/
+// req: client에서 요청하는 객체, res: server에서 응답하는 객체
+// postman 설치: vue.js를 대신해서 서버를 호출하여 테스트할 수 있음
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
