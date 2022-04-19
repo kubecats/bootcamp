@@ -1,6 +1,5 @@
-const xlsx = require("xlsx");
-
-const workbook = xlsx.utils.book_new(); // 가상의 신규 엑셀 파일 생성
+const xlsx = require("xlsx-js-style");
+const workbook = xlsx.utils.book_new(); // 가상의 엑셀 파일 생성
 
 const customers = [
   { name: "고객명", email: "이메일", phone: "연락처" }, // 첫번째 행 - 컬럼명
@@ -9,7 +8,6 @@ const customers = [
   { name: "송지효", email: "song@gmail.com", phone: "010-0000-0003" },
 ];
 
-// json을 가져와서 실제 엑셀시트를 생성함
 const firstSheet = xlsx.utils.json_to_sheet(customers, {
   header: ["name", "email", "phone"],
   skipHeader: true,
@@ -21,6 +19,15 @@ firstSheet["!cols"] = [
   { wpx: 200 }, // phone 열 너비
 ];
 
-// 만든 엑셀파일, 만든 시트, sheet의 이름
+// 셀에 style을 먹임, s가 style이라는 뜻
+firstSheet["A1"].s = {
+  font: {
+    name: "Calibri",
+    sz: 24,
+    bold: true,
+    color: { rgb: "FF0000" },
+  },
+};
+
 xlsx.utils.book_append_sheet(workbook, firstSheet, "Customers");
-xlsx.writeFile(workbook, "./xlsx/customers.xlsx");
+xlsx.writeFile(workbook, "./xlsx/customers_styled.xlsx");
